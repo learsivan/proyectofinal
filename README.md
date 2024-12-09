@@ -1,5 +1,4 @@
-# Proyecto Final
-# Clasificación Automática de Tickets con NLP
+# Análisis de Sentimiento: Modelo de predicción de sentimiento en base a los tweets sobre el COVID-19
 
 ## Índice
 
@@ -19,6 +18,7 @@
     - [Árbol de Decisión](#árbol-de-decisión)
     - [Random Forest](#random-forest)
     - [Naive Bayes](#naive-bayes)
+    - [BERT](#bert)
 
 ## Introducción
 
@@ -30,23 +30,24 @@ Para lograr este objetivo, se han definido cinco objetivos específicos que guia
 
 Este proyecto se enfoca en abordar los desafíos actuales en el análisis de sentimientos en redes sociales, utilizando enfoques avanzados de inteligencia artificial. Con la implementación de estos modelos optimizados, se espera mejorar significativamente la comprensión de las emociones y opiniones generadas en tiempos de crisis, proporcionando herramientas más efectivas para los investigadores, gobiernos y organizaciones que necesiten interpretar el sentimiento público y tomar decisiones informadas basadas en datos.
 
-### Métodos Utilizados (PENDIENTE)
-Recopilación de datos. (PENDIENTE)
-El conjunto de datos para el estudio está compuesto por 78,313 registros y 22 columnas, la data esta almacenada en una base de datos en formato JSON ("complaints.json"), por lo que, para su tratamiento y análisis, se debe convertir a un formato de dataframe, utilizando para ese fin la librería REQUEST de Python.
+### Métodos Utilizados
+Recopilación de datos.
+El conjunto de datos para el estudio está compuesto por 41.157 registros y 6 columnas, la data esta almacenada en una base de datos en formato CSV, que puede ser consultada directamente en el archivo .ipynb.
 
 Análisis Exploratorio de Datos (EDA):
-* Renombrado de columnas.
-* Preparación del texto para el modelado (conversión a minúsculas).
-* Lematización y extración de POS tags.
+* Renombrar columnas.
+* Preparación del texto para el modelado.
+* Lematización y extracción de POS tags
 * Análisis de exploratorio de datos para familiarizarse con la información.
 
-Desarrollo de Modelos: (PENDIENTE)
+Desarrollo de Modelos:
 * Modelo de Regresión Logística.
 * Modelo de Árbol de Decisión.
 * Modelo Random Forest.
 * Modelo de Naive Bayes.
+* Modelo BERT
 
-### Tecnologías (PENDIENTE)
+### Tecnologías
 * Python
 * Pandas
 * Numpy
@@ -54,9 +55,9 @@ Desarrollo de Modelos: (PENDIENTE)
 * Spacy
 * Matplotlib
 * Plotly
-* Seaborn 
 * Wordcloud
 * Sklearn
+* Transformers
   
 ## Descarga y Configuración
 ### Requisitos Previos
@@ -76,10 +77,10 @@ Puede descargar el código fuente clonando este repositorio usando Git:
 git clone <GITHUB_REPO_URL>
 ```
 
-3. Abra el archivo notebook ** Proyecto_2_NLP_Clasificacion_Automatica_de_Tickets.ipynb** en Anaconda. (PENDIENTE)
+3. Abra el archivo notebook ** Proyecto_Final_ML_Analisis_de_Sentimiento_COVID.ipynb** en Anaconda.
 
 ```
-jupyter notebook <Proyecto_2_NLP_Clasificacion_Automatica_de_Tickets.ipynb> (PENDIENTE)
+jupyter notebook <Proyecto_Final_ML_Analisis_de_Sentimiento_COVID.ipynb>
 ```
 ## Declaración del Problema
 
@@ -91,39 +92,40 @@ Para superar estas limitaciones, las arquitecturas de redes neuronales profundas
 
 Desarrollar y optimizar modelos de clasificación de tweets que permitan un análisis de sentimiento preciso y eficiente, aprovechando las grandes cantidades de datos generados durante la pandemia de COVID-19.
 
-### Preparación de Datos: (PENDIENTE)
+### Preparación de Datos:
 
-1. Recopilación de datos.
-2. Análisis Exploratorio de Datos (EDA).
-2.1 Renombrar columnas
-2.2 Preparación del texto para el modelado
-2.3 Lematización y extracción de POS tags
-2.4 Análisis exploratorio de datos para famliarizarse con la información
-3. Modelado mediante Non-Negative Matrix Factorization (NMF).
-3.1 Definición del mejor número de tópicos
-3.1 Topicos establecidos
+1. Carga de datos
+2. Preparación de datos
+3. Análisis exploratorio de datos para familiarizarse con los datos
+4. Extracción de características
+5. Modelado
 
-### Construcción y Evaluación de los Modelos (PENDIENTE)
+### Construcción y Evaluación de los Modelos
 
 1. Modelo de Regresión Logística 
-1.1 Entrenamiento y testeo
-1.2 Aplicación
+1.1 Inicialización
+1.2 Entrenamiento
 1.3 Evaluación
 
 2. Modelo de Árbol de Decisión 
-2.1 Entrenamiento y testeo
-2.2 Aplicación
+2.1 Inicialización
+2.2 Entrenamiento
 2.3 Evaluación
 
 3. Modelo Random Forest
-3.1 Entrenamiento y testeo
-3.2 Aplicación
+3.1 Inicialización
+3.2 Entrenamiento
 3.3 Evaluación
 
 4. Modelo Naive Bayes 
-4.1 Entrenamiento y testeo
-4.2 Aplicación
+4.1 Inicialización
+4.2 Entrenamiento
 4.3 Evaluación
+
+5. Modelo BERT 
+5.1 Configuración
+5.2 Entrenamiento
+5.3 Evaluación
 
 ### Conclusiones
 
@@ -136,18 +138,30 @@ El estudio se centró en el desarrollo y la optimización de modelos de clasific
 
 
 
-#### Regresión Logística (PENDIENTE)
-* **Exactitud :** 96.58%
-* **F1-Score :** 96.57%
+#### Regresión Logística
+* **Accuracy :** 41%
+* **F1-Score Extremely Negative :** 44%
+* **F1-Score Extremely Positive :** 38%
 
 #### Árbol de Decisión
-* **Exactitud :** 82.37%
-* **F1-Score :** 82.36%
+* **Accuracy :** 35%
+* **F1-Score Extremely Negative :** 35%
+* **F1-Score Extremely Positive :** 31%
 
 #### Random Forest
-* **Exactitud :** 87.25%
-* **F1-Score :** 87.18%
+* **Accuracy :** 42%
+* **F1-Score Extremely Negative :** 43%
+* **F1-Score Extremely Positive :** 32%
 
 #### Naive Bayes
-* **Exactitud :** 76.67%
-* **F1-Score :** 75.63%
+* **Accuracy :** 34%
+* **F1-Score Extremely Negative :** 8%
+* **F1-Score Extremely Positive :** 9%
+
+#### BERT
+* **Accuracy :** 45%
+* **F1-Score 0 :** 41%
+* **F1-Score 1 :** 49%
+* **F1-Score 2 :** 42%
+* **F1-Score 3 :** 47%
+* **F1-Score 4 :** 53%
